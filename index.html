@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marie Poterie - Artisanat Céramique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+
+        .profile h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .profile p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link {
+            background-color: rgba(255, 255, 255, 0.85);
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .link i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .facebook { color: #1877F2; }
+        .instagram { 
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+        }
+        .website { color: #5e4934; }
+
+        .petal {
+            position: absolute;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23ffb6c1" d="M50 0c13.8 0 25 20 25 45S63.8 90 50 90 25 70 25 45 36.2 0 50 0z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .profile h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Vidéo d'arrière-plan -->
+    <video autoplay muted loop class="video-background">
+        <source src="bg2.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">
+        <div class="profile">
+            <img src="pp.png" alt="Marie Poterie">
+            <h1>Marie Poterie</h1>
+            <p>Artisanat céramique & créations uniques</p>
+        </div>
+
+        <div class="links">
+            <a href="https://www.facebook.com/" class="link facebook" target="_blank">
+                <i class="fab fa-facebook-f"></i> Mon Facebook
+            </a>
+            <a href="https://www.instagram.com/marie.poteriee/" class="link instagram" target="_blank">
+                <i class="fab fa-instagram"></i> Mon Instagram
+            </a>
+            <a href="#" class="link website" target="_blank">
+                <i class="fas fa-globe"></i> Mon Site (bientôt disponible)
+            </a>
+        </div>
+
+        <footer>
+            © 2023 Marie Poterie - Tous droits réservés
+        </footer>
+    </div>
+
+    <script>
+        // Création des pétales de cerisier
+        function createPetals() {
+            const petalCount = 15;
+            
+            for (let i = 0; i < petalCount; i++) {
+                createPetal();
+            }
+            
+            // Ajouter de nouvelles pétales périodiquement
+            setInterval(createPetal, 1000);
+        }
+        
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            
+            // Position aléatoire en haut de l'écran
+            const startPositionX = Math.random() * window.innerWidth;
+            const startPositionY = -20;
+            
+            // Taille aléatoire
+            const size = Math.random() * 15 + 10;
+            
+            // Durée d'animation aléatoire
+            const animationDuration = Math.random() * 10 + 10;
+            
+            // Opacité aléatoire
+            const opacity = Math.random() * 0.6 + 0.3;
+            
+            // Rotation initiale aléatoire
+            const rotation = Math.random() * 360;
+            
+            petal.style.left = `${startPositionX}px`;
+            petal.style.top = `${startPositionY}px`;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            petal.style.opacity = opacity;
+            petal.style.transform = `rotate(${rotation}deg)`;
+            
+            document.body.appendChild(petal);
+            
+            // Animation de chute
+            const fallAnimation = petal.animate([
+                { 
+                    transform: `translate(0, 0) rotate(${rotation}deg)`,
+                    opacity: opacity 
+                },
+                { 
+                    transform: `translate(${Math.random() * 100 - 50}px, ${window.innerHeight + 20}px) rotate(${rotation + 360}deg)`,
+                    opacity: 0 
+                }
+            ], {
+                duration: animationDuration * 1000,
+                easing: 'linear'
+            });
+            
+            // Supprimer la pétale après l'animation
+            fallAnimation.onfinish = () => {
+                petal.remove();
+            };
+        }
+        
+        // Démarrer l'effet quand la page est chargée
+        window.addEventListener('load', createPetals);
+    </script>
+</body>
+</html>
